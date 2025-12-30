@@ -1,0 +1,30 @@
+#Task-1 DATABASE CREATION
+create database school_db;
+use school_db;
+create table student(id int primary key,name varchar(50),email varchar(50),dob date,marks int);
+#TASK-2 SQL OPERATION
+insert into student values(101,'Sunil KUmar','sunil@gmail.com','2001-03-11',90);
+insert into student values(102,'Ajay','ajay@gmail.com','2002-07-23',70);
+insert into student values(103,'Sanjay varma','sanjay@gmail.com','2003-03-13',80);
+insert into student values(104,'vishnu varma','vishnu@gmail.com','2002-04-13',70);
+insert into student values(105,'prudhvi raj','prudhvi@gmail.com','2002-7-28',90);
+select * from student where marks>70;
+select avg(marks) from student;
+select max(marks) from student;
+select * from student order by marks desc;
+CREATE TABLE course (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(100),
+    student_id INT,
+    FOREIGN KEY (student_id) REFERENCES student(id)
+);
+INSERT INTO course (course_id, course_name, student_id) VALUES
+(1, 'Mathematics', 101),
+(2, 'Physics', 102),
+(3, 'Chemistry', 103),
+(4, 'Biology', 104),
+(5, 'Computer Science', 105);
+SELECT s.id, s.name, s.email, s.dob, s.marks, c.course_name
+FROM student s
+JOIN course c ON s.id = c.student_id;
+select * from student;
